@@ -123,7 +123,7 @@ def edit_students_page():
         return redirect(url_for("home"))
     return render_template("edit_students.html", teacherid=session["TeacherID"], error=None)
 
-@app.route("/dashboard/edit_student", methods=["POST"])
+@app.route("/edit_student", methods=["POST"])
 def edit_student():
     if "TeacherID" not in session:
         return redirect(url_for("home"))

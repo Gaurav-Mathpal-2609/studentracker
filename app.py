@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, session, url_for, redirect
 from flask_restful import Api
 import sqlite3
+import os
 
 app = Flask(__name__)
 app.secret_key = "supersecret"
@@ -286,4 +287,5 @@ def get_subjects():
 
 #RUN
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # use Render's assigned port
+    app.run(host="0.0.0.0", port=port)

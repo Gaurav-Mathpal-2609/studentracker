@@ -12,20 +12,20 @@ A simple Flask-based web application to manage student data using **SQLite** as 
 - Virtual environment (recommended)
 
 ## Installation & Run
+
 ```bash
-# 1. Create virtual environment
-python3 -m venv venv
+1. Create virtual environment
+# python3 -m venv venv
 
-# 2. Activate virtual environment
-source venv/bin/activate
+2. Activate virtual environment
+# source venv/bin/activate
 
-# 3. Upgrade pip and install dependencies
-python -m pip install --upgrade pip
-pip install -r requirements.txt
+3. Upgrade pip and install dependencies
+# python -m pip install --upgrade pip
+# pip install -r requirements.txt
 
-# 4. Start the Flask app
-python app.py
+4. Start the Flask app
+# python app.py
 
-# 5. Open in browser
-# After running the above command, open:
-http://localhost:5000
+5. Open in browser
+# http://localhost:5000

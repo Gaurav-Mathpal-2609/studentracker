@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studtracker - Summary</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-800 min-h-screen flex flex-col">
+
+<!-- Top Bar -->
+<div class="bg-gray-700 p-4 shadow-md">
+  <h1 class="text-center text-2xl font-bold text-white tracking-wide">STUDENT SUMMARY</h1>
+</div>
+
+<div class="flex flex-col flex-grow items-center justify-start p-6">
+
+  <!-- Overall Topper -->
+  <div class="bg-green-600 text-white p-4 rounded-lg mb-4 w-full max-w-4xl text-center">
+    <h2 class="text-3xl font-bold">Overall Topper: {{ overall_topper }}</h2>
+  </div>
+
+  <!-- Toppers per Subject -->
+  <div class="bg-blue-600 text-white p-4 rounded-lg mb-4 w-full max-w-4xl text-center text-xl">
+    <h2 class="text-lg font-bold mb-2">Toppers per Subject</h2>
+    <ul class="list-disc list-inside">
+      {% for subject, info in toppers_per_subject.items() %}
+        <li>{{ subject }}: {{ info.Name }} (Grade: {{ info.Grade }})</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- Complete Table -->
+  <div class="bg-gray-700 text-white rounded-lg p-4 w-full max-w-4xl overflow-x-auto">
+    <table class="min-w-full table-auto border border-gray-400">
+      <thead>
+        <tr class="bg-gray-600">
+          <th class="border px-4 py-2">Student</th>
+          {% for sub in subjects %}
+          <th class="border px-4 py-2">{{ sub }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for s in student_table.values() %}
+        <tr>
+          <td class="border px-4 py-2">{{ s.Name }}</td>
+          {% for sub in subjects %}
+          <td class="border px-4 py-2">{{ s.Grades[sub] if s.Grades[sub] is defined else '-' }}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</body>
+</html>
